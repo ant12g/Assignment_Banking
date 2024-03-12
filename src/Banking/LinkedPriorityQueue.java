@@ -1,3 +1,10 @@
+/*************************************************
+ File: Assignment_Banking
+ By: Antonio Gonzalez
+ Date: 03/12/2024
+ Description: Assignment 2 banking application.
+
+ *************************************************/
 package Banking;
 
 public class LinkedPriorityQueue<T extends ComparableInterface<ComparableInterface>> implements QueueInterface<T> {
