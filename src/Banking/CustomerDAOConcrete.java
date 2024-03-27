@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.util.*;
+import javax.swing.JOptionPane;
 
 class CustomerDAOConcrete implements CustomerDAO {
 
@@ -21,17 +24,38 @@ class CustomerDAOConcrete implements CustomerDAO {
     static String username = CustomerDataConnection.getUsername();
     static String pwd = CustomerDataConnection.getPWD();
 
-    CustomerDAOConcrete() {
-
-        try {
-
-            connection = CustomerDataConnection.getDBConnection();
-
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
-        }
-
+//    CustomerDAOConcrete() {
+//
+//        try {
+//
+//            connection = CustomerDataConnection.getDBConnection();
+//
+//        } catch (SQLException se) {
+//            System.out.println(se.getMessage());
+//        }
+//
+//    }
+CustomerDAOConcrete() {
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = CustomerDataConnection.getDBConnection();
+    } catch (ClassNotFoundException e) {
+        System.out.println("MySQL JDBC Driver not found. Include it in your library path ");
+        e.printStackTrace();
+    } catch (SQLException se) {
+        System.out.println(se.getMessage());
     }
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CSC413", "root", "passwords");
+    } catch (ClassNotFoundException e) {
+        System.out.println("MySQL JDBC Driver not found. Include it in your library path ");
+        e.printStackTrace();
+    } catch (SQLException se) {
+        System.out.println(se.getMessage());
+    }
+}
+
 
     // Method to disconnect from the database
     public static void disconnect() throws SQLException {

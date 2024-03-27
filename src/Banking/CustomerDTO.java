@@ -69,21 +69,36 @@ public class CustomerDTO {
             this.id = anID;
         }
 
-        public static Customer employeeByID(int anId) {
+//        public static Customer employeeByID(int anId) {
+//
+//            Customer anEmployee = null;
+//
+//            try {
+//                anEmployee = ed.get(anId);
+//            } catch(SQLException se) {
+//                System.out.println(se.getMessage());
+//            }
+//            if(anEmployee != null) System.out.println(anEmployee.toString());
+//
+//            System.out.println("\nFetched Customer with ID: " + anId + " Employee Details:\n" + anEmployee.toString());
+//            return anEmployee;
+//
+//        }
 
-            Customer anEmployee = null;
-
-            try {
-                anEmployee = ed.get(anId);
-            } catch(SQLException se) {
-                System.out.println(se.getMessage());
-            }
-            if(anEmployee != null) System.out.println(anEmployee.toString());
-
-            System.out.println("\nFetched Customer with ID: " + anId + " Employee Details:\n" + anEmployee.toString());
-            return anEmployee;
-
+    public static Customer employeeByID(int anId) {
+        Customer anEmployee = null;
+        try {
+            anEmployee = ed.get(anId);
+        } catch(SQLException se) {
+            System.out.println(se.getMessage());
         }
+        if(anEmployee != null) {
+            System.out.println("\nFetched Customer with ID: " + anId + " Employee Details:\n" + anEmployee.toString());
+        } else {
+            System.out.println("No employee found with ID: " + anId);
+        }
+        return anEmployee;
+    }
 
         public static int performUpdate(Customer anEmployee) {
 

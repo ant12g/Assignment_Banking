@@ -56,9 +56,9 @@ public class DTOANDDAO {
 
     }
 
-    private static Customer performFetch(int empID) {
+    private static Customer performFetch(int custID) {
 
-        return CustomerDTO.employeeByID(empID);
+        return CustomerDTO.employeeByID(custID);
 
     }
 
